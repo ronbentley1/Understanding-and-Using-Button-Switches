@@ -1,4 +1,5 @@
-//
+// Ron D Bentley, Stafford, UK
+// Jan 2021
 //
 //  This example and code is in the public domain and may be used without restriction and
 //  without warranty.
