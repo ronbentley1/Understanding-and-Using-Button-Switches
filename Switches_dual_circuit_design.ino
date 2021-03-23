@@ -5,11 +5,11 @@
 //  without warranty.
 
 /*
-  READING SIMPLE SWITCHES RELIABLY, WITH OR WITHOUT A SWITCH PULL DOWN RESISTER
+  READING SIMPLE SWITCHES RELIABLY, WITH OR WITHOUT A SWITCH PULL DOWN RESISTOR
   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
   In this example sketch we look at configuring a simple button switch such that when pressed
   it will toggle a LED on and off.  The sketch automatically allows for one of two switch
-  circuits to be configured, either with a pull down switch resister or without.  This is configured
+  circuits to be configured, either with a pull down switch resistor or without.  This is configured
   and controlled with a simple macro parameter - see points of note below.
 
   Additionally, this sketch offers two methods to read a simple button switch, each offered as a
@@ -45,10 +45,10 @@
 
     3.  The wiring designs for each type of switch circuit are:
 
-        With switch pull down resister configured and 'circuit_type' of INPUT
+        With switch pull down resistor configured and 'circuit_type' of INPUT
 
               10K ohm     button      (onboard)
-              resister    switch         LED
+              resistor    switch         LED
           ____|<><><>|_______ \___        O
          |              |         |       |
          0v         pin = 2      +5v    pin =
@@ -56,7 +56,7 @@
          ___________________________________
          |            ARDUINO              |
 
-        With NO switch pull down resister configured and 'circuit_type' of INPUT_PULLUP
+        With NO switch pull down resistor configured and 'circuit_type' of INPUT_PULLUP
 
              button     (onboard)
              switch        LED
@@ -68,12 +68,12 @@
          |       ARDUINO       |
 
     5.  The on board LED (MEGA 2560) is utilised for testing to keep circuit design to a minimum.
-        If not using the onboard LED then configure one in the traditional way using a 230ohm resister (for
+        If not using the onboard LED then configure one in the traditional way using a 230ohm resistor (for
         a red LED) and a red LED on a breadboard, or otherwise.
 */
 // define type of switch circuit and associated LOW and HIGH variables:
-//    - circuit C1, INPUT with switch resister           -> switch_high = HIGH, switch_low = LOW
-//    - circuit C2, INPUT_PULLUP with no switch resister -> switch_high = LOW,  switch_low = HIGH
+//    - circuit C1, INPUT with switch resistor           -> switch_high = HIGH, switch_low = LOW
+//    - circuit C2, INPUT_PULLUP with no switch resistor -> switch_high = LOW,  switch_low = HIGH
 
 #define circuit_C1    INPUT
 #define circuit_C2    INPUT_PULLUP
@@ -94,11 +94,11 @@ void setup() {
   pinMode(button_switch, circuit_type); // circuit_type == INPUT or INPUT_PULLUP
   // establish meanings for switch on/off depending on circuit_type
   if (circuit_type == INPUT_PULLUP) {
-    // switch is NOT configured with a pull down switch resister
+    // switch is NOT configured with a pull down switch resistor
     switch_high = LOW;  // switch pin goes LOW when switch pressed, ie on
     switch_low  = HIGH; // switch pin goes HIGH when switch released, ie off
   } else {
-    // circuit_type == INPUT, so switch IS configured with a pull down switch resister
+    // circuit_type == INPUT, so switch IS configured with a pull down switch resistor
     switch_high = HIGH; // switch pin goes HIGH when switch pressed, ie on
     switch_low  = LOW;  // switch pin goes LOW when switch released, ie off
   }
